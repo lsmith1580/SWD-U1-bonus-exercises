@@ -65,7 +65,11 @@ console.log(""); // skip a line in console
  
 // TODO: Use what you've learned about how to access keys and values to loop through the object and print only values which belong to food items that are sides. No need to write this one as a function, just do the loop. Hint 1: you need to check the key names, not the values! Hint 2: Even though they don't look like it in the object, keys are stored as strings.
 
-
+for (let foodItem in lunchBox) {
+	if (foodItem.includes("side")) {
+		console.log(lunchBox[foodItem]);
+	}
+}
 
 /**** LOOPING THROUGH OBJECTS WITH ARRAYS AS VALUES ****/
 
@@ -95,10 +99,24 @@ for (let packageType in pantry) {
 console.log(""); // skip a line in console
 
 // TODO: Write a function that takes in an index number, prints "Items at index (x):" and then prints the element at that index of each array as you loop through the object. Use the escape character \t to indent each item for that index. If the array doesn't have anything at that index, it should be skipped without throwing an error. (Note: you don't need nested loops for this one.)
+function printItemsAtIndex(anyObj, idx) {
+	console.log(`Items at index (${idx}):`);
+	for (let key in anyObj) {
+		if (Array.isArray(anyObj[key]) && anyObj[key].length > idx) {
+			console.log(`\t${anyObj[key][idx]}`);
+		}
+	} 
+}
+
 
 
 // TODO: Call the function above at 2 or 3 different index numbers and check to see the results are what you expect.
 
+printItemsAtIndex(pantry, 0);
+
+printItemsAtIndex(pantry, 2);
+
+printItemsAtIndex(pantry, 3);
 
 // TODO: Now write a function that takes a package type as a parameter and then prints all the items of the array only for that package type. This time, print "Items that are (type):" and then put a "- " in front of each item from that array. (Hint: if you already know the name of the package type, you don't need a for...in loop to check every property!)
 
